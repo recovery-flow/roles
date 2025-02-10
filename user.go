@@ -3,16 +3,16 @@ package roles
 type UserRole string
 
 const (
-	RoleUserSuperAdmin UserRole = "user_super_admin"
-	RoleUserAdmin      UserRole = "user_admin"
-	RoleUserGov        UserRole = "user_gov"
-	RoleUserVerify     UserRole = "user_verify"
+	RoleUserSuperAdmin UserRole = "super_admin"
+	RoleUserAdmin      UserRole = "admin"
+	RoleTechAdmin      UserRole = "tech_admin"
+	RoleUserVerify     UserRole = "verify"
 	RoleUserSimple     UserRole = "user"
 )
 
 func ValidateRoleUser(r UserRole) bool {
 	switch r {
-	case RoleUserGov, RoleUserAdmin, RoleUserVerify, RoleUserSimple:
+	case RoleUserSuperAdmin, RoleTechAdmin, RoleUserAdmin, RoleUserVerify, RoleUserSimple:
 		return true
 	default:
 		return false
@@ -21,13 +21,13 @@ func ValidateRoleUser(r UserRole) bool {
 
 func StringToRoleUser(role string) (UserRole, error) {
 	switch role {
-	case "user_super_admin":
+	case "super_admin":
 		return RoleUserSuperAdmin, nil
-	case "user_admin":
+	case "admin":
 		return RoleUserAdmin, nil
-	case "user_gov":
-		return RoleUserGov, nil
-	case "user_verify":
+	case "tech_admin":
+		return RoleTechAdmin, nil
+	case "verify":
 		return RoleUserVerify, nil
 	case "user":
 		return RoleUserSimple, nil
@@ -45,7 +45,7 @@ func CompareRolesUser(role1, role2 UserRole) int {
 	priority := map[UserRole]int{
 		RoleUserSuperAdmin: 5,
 		RoleUserAdmin:      4,
-		RoleUserGov:        3,
+		RoleTechAdmin:      3,
 		RoleUserVerify:     2,
 		RoleUserSimple:     1,
 	}
