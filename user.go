@@ -5,14 +5,13 @@ type UserRole string
 const (
 	RoleUserSuperAdmin UserRole = "super_admin"
 	RoleUserAdmin      UserRole = "admin"
-	RoleTechAdmin      UserRole = "tech_admin"
 	RoleUserVerify     UserRole = "verify"
 	RoleUserSimple     UserRole = "user"
 )
 
 func ValidateRoleUser(r UserRole) bool {
 	switch r {
-	case RoleUserSuperAdmin, RoleTechAdmin, RoleUserAdmin, RoleUserVerify, RoleUserSimple:
+	case RoleUserSuperAdmin, RoleUserAdmin, RoleUserVerify, RoleUserSimple:
 		return true
 	default:
 		return false
@@ -25,8 +24,6 @@ func StringToRoleUser(role string) (UserRole, error) {
 		return RoleUserSuperAdmin, nil
 	case "admin":
 		return RoleUserAdmin, nil
-	case "tech_admin":
-		return RoleTechAdmin, nil
 	case "verify":
 		return RoleUserVerify, nil
 	case "user":
@@ -45,7 +42,6 @@ func CompareRolesUser(role1, role2 UserRole) int {
 	priority := map[UserRole]int{
 		RoleUserSuperAdmin: 5,
 		RoleUserAdmin:      4,
-		RoleTechAdmin:      3,
 		RoleUserVerify:     2,
 		RoleUserSimple:     1,
 	}
