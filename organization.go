@@ -18,7 +18,7 @@ func ValidateRoleOrg(r OrgRole) bool {
 	}
 }
 
-func StringToRoleOrg(role string) (OrgRole, error) {
+func ParseOrgRole(role string) (OrgRole, error) {
 	switch role {
 	case "owner":
 		return RoleOrgOwner, nil

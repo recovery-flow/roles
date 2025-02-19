@@ -18,7 +18,7 @@ func ValidateRoleUser(r UserRole) bool {
 	}
 }
 
-func StringToRoleUser(role string) (UserRole, error) {
+func ParseUserRole(role string) (UserRole, error) {
 	switch role {
 	case "super_admin":
 		return RoleUserSuperAdmin, nil

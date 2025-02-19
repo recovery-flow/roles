@@ -18,7 +18,7 @@ func ValidateRoleTeam(r TeamRole) bool {
 	}
 }
 
-func StringToRoleTeam(role string) (TeamRole, error) {
+func ParseTeamRole(role string) (TeamRole, error) {
 	switch role {
 	case "owner":
 		return RoleTeamOwner, nil
